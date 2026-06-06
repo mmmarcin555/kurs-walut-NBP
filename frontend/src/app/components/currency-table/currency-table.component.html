@@ -1,0 +1,77 @@
+<div class="table-card">
+  <div class="card-top">
+    <div class="card-header">
+      <h3>Tabela kursów</h3>
+      <p class="card-desc">Filtruj dane według okresu i waluty</p>
+    </div>
+
+    <div class="controls-row">
+      <div class="view-modes">
+        <button [class.active]="viewMode === 'year'" (click)="setViewMode('year')">Rok</button>
+        <button [class.active]="viewMode === 'quarter'" (click)="setViewMode('quarter')">Kwartał</button>
+        <button [class.active]="viewMode === 'month'" (click)="setViewMode('month')">Miesiąc</button>
+        <button [class.active]="viewMode === 'day'" (click)="setViewMode('day')">Dzień</button>
+      </div>
+
+      <div class="filters">
+        <select *ngIf="viewMode !== 'day'" [(ngModel)]="selectedYear" (change)="loadData()">
+          <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+        </select>
+
+        <select *ngIf="viewMode === 'quarter'" [(ngModel)]="selectedQuarter" (change)="loadData()">
+          <option *ngFor="let q of quarters" [value]="q">{{ getQuarterLabel(q) }}</option>
+        </select>
+
+        <select *ngIf="viewMode === 'month'" [(ngModel)]="selectedMonth" (change)="loadData()">
+          <option *ngFor="let m of months" [value]="m.value">{{ m.label }}</option>
+        </select>
+
+        <input
+          *ngIf="viewMode === 'day'"
+          type="date"
+          [(ngModel)]="selectedDate"
+          (change)="loadData()"
+        />
+
+        <input
+          type="text"
+          placeholder="Filtruj walutę (np. USD)"
+          [(ngModel)]="selectedCurrencyCode"
+          (input)="applyFilter()"
+          class="currency-filter"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="status-msg">Ładowanie danych...</div>
+  <div *ngIf="error" class="status-msg error">{{ error }}</div>
+  <div *ngIf="!loading && !error && filteredRates.length === 0" class="status-msg">
+    Brak danych — pobierz kursy walut używając formularza powyżej.
+  </div>
+
+  <div class="table-wrapper" *ngIf="filteredRates.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Kod</th>
+          <th>Waluta</th>
+          <th class="align-right">Kurs (PLN)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rate of filteredRates; trackBy: trackByRate">
+          <td class="date-cell">{{ rate.date }}</td>
+          <td><span class="badge">{{ rate.currency_code }}</span></td>
+          <td class="name-cell">{{ rate.currency_name }}</td>
+          <td class="rate-value">{{ rate.mid_rate | number: '1.4-4' }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="table-footer">
+      Wyników: <strong>{{ filteredRates.length }}</strong>
+    </div>
+  </div>
+</div>

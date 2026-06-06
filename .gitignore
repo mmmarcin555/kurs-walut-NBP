@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+test.db
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+coverage/
+
+# Docker
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

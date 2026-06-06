@@ -1,0 +1,32 @@
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <h1>NBP Kursy</h1>
+      <span class="logo-sub">Waluty i dane</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <span class="nav-label">Menu</span>
+      <a class="nav-item active">Kursy walut</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      Źródło: <strong>api.nbp.pl</strong>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <header class="topbar">
+      <div>
+        <h2>Kursy walut NBP</h2>
+        <span class="topbar-date">{{ today }}</span>
+      </div>
+      <div class="topbar-badge">Tabela A — PLN</div>
+    </header>
+
+    <div class="content-area">
+      <app-fetch-form></app-fetch-form>
+      <app-currency-table></app-currency-table>
+    </div>
+  </div>
+</div>

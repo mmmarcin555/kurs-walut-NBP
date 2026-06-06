@@ -1,0 +1,26 @@
+<div class="fetch-card">
+  <div class="card-header">
+    <h3>Pobierz dane z NBP</h3>
+    <p class="card-desc">Wybierz zakres dat i pobierz kursy walut do bazy danych</p>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label for="startDate">Data od</label>
+      <input id="startDate" type="date" [(ngModel)]="startDate" [max]="endDate || ''" />
+    </div>
+
+    <div class="form-group">
+      <label for="endDate">Data do</label>
+      <input id="endDate" type="date" [(ngModel)]="endDate" [min]="startDate || ''" />
+    </div>
+
+    <button class="btn-fetch" (click)="onFetch()" [disabled]="loading">
+      {{ loading ? 'Pobieranie...' : 'Pobierz dane' }}
+    </button>
+  </div>
+
+  <div *ngIf="message" class="message" [class.error]="isError" [class.success]="!isError">
+    {{ message }}
+  </div>
+</div>

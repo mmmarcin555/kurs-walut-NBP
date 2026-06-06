@@ -1,0 +1,148 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 230px;
+  min-width: 230px;
+  background-color: #13151a;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  border-right: 1px solid #2a2d35;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 20px;
+  border-bottom: 1px solid #2a2d35;
+}
+
+.logo-icon {
+  font-size: 28px;
+  background: linear-gradient(135deg, #2dbe8a, #1a9c6e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sidebar-logo h1 {
+  font-size: 17px;
+  color: #f0f0f0;
+  line-height: 1.2;
+}
+
+.logo-sub {
+  font-size: 11px;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #555;
+  padding: 0 8px;
+  margin-bottom: 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  background: #1e2128;
+  color: #ccc;
+}
+
+.nav-item.active {
+  background: #1e2b25;
+  color: #2dbe8a;
+  font-weight: 600;
+}
+
+.nav-icon {
+  font-size: 16px;
+}
+
+.sidebar-footer {
+  padding: 16px 20px;
+  font-size: 11px;
+  color: #444;
+  border-top: 1px solid #2a2d35;
+}
+
+.sidebar-footer strong {
+  color: #666;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  background-color: #1e2128;
+  border-bottom: 1px solid #2a2d35;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topbar-title h2 {
+  font-size: 18px;
+  color: #f0f0f0;
+  font-weight: 600;
+}
+
+.topbar-date {
+  font-size: 12px;
+  color: #555;
+  margin-top: 2px;
+  display: block;
+  text-transform: capitalize;
+}
+
+.topbar-badge {
+  background: #1e2b25;
+  color: #2dbe8a;
+  border: 1px solid #2a4a38;
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.content-area {
+  flex: 1;
+  padding: 24px 28px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
